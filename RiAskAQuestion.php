@@ -10,14 +10,16 @@ class RiAskAQuestion extends Plugin{
         
         $container = $this->container;
         
+        $request = $container->getParameter('request');
+        
         $objects_id = 0;
         $type = 'categories';
-        if(isset($_GET['products_id'])) { 
+        if($request->get('products_id') != null) { 
             $type = 'products';   		
-    		$objects_id = $_GET['products_id'];
+    		$objects_id = $request->get('products_id');
     	}
-    	elseif(isset($_GET['cPath'])) {    		
-    		$objects_id = end(explode('_' , $_GET['cPath']));
+    	elseif($request->get('cPath') != null) {    		
+    		$objects_id = end(explode('_' , $request->get('cPath')));
     	}
     
         $parse_view = function ($event) use ($container, $type, $objects_id){

@@ -2,10 +2,9 @@
 
 namespace plugins\riAskAQuestion;
 
-use plugins\riPlugin\Object;
-
 use plugins\riResultList\ResultSource;
-class AskAQuestions extends \plugins\riResultList\ResultSource{
+
+class AskAQuestions extends ResultSource{
     
     private $questions = array();
 	
@@ -14,7 +13,7 @@ class AskAQuestions extends \plugins\riResultList\ResultSource{
 		
 		if($reload || !isset($this->questions[$id])){
 		
-    		$result = $db->Execute("select * from ".DB_PREFIX."ask_a_question where id=".(int)$id);
+    		$result = $db->Execute("select * from " . TABLE_ASK_A_QUESTION . " where id=".(int)$id);
     		if($result->recordCount() > 0)
     			$this->questions[$id] = $this->container->get('riAskAQuestion.AskAQuestion')->setArray($result->fields);					
     		else 
@@ -25,7 +24,7 @@ class AskAQuestions extends \plugins\riResultList\ResultSource{
 	
 	public function getTotalNumberOfResults(){
 		global $db;
-		$sql = "SELECT COUNT(*) AS count FROM ".DB_PREFIX."ask_a_question";
+		$sql = "SELECT COUNT(*) AS count FROM " . TABLE_ASK_A_QUESTION;
 		
 		$sql = $this->resultList_->buildBaseQuery($sql);
 			
@@ -37,7 +36,7 @@ class AskAQuestions extends \plugins\riResultList\ResultSource{
 	public function getResults($reload = false){
 		global $db;
 		
-		$sql = "SELECT * FROM ".DB_PREFIX."ask_a_question";
+		$sql = "SELECT * FROM " . TABLE_ASK_A_QUESTION;
 
 		$sql = $this->resultList_->buildPaginationQuery($sql);	
 		
