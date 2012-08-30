@@ -1,10 +1,10 @@
 routes:
-  admin_askaquestion:
-    pattern: /admin_askaquestion/
+  admin_index:
+    pattern: /admin/index/
     defaults: { _controller: plugins\riAskAQuestion\AdminAskAQuestionController::indexAction}
       
 global:
   backend:
     menu:
       customers:
-        - {text:  Ask a question,  link:  ri.php/admin_askaquestion/}
+        - {text:  Ask a question,  link:  ri.php/riaskaquestion/admin/index/}

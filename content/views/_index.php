@@ -1,4 +1,4 @@
-<form action="<?php echo $router->generate('admin_askaquestion', riGetAllGetParams());?>" method="POST">
+<form action="<?php echo $router->generate('riaskaquestion_admin_index', riGetAllGetParams());?>" method="POST">
 <input type="hidden" name="sub_action" value="mass_update" />
 <table>
 	<tr class="dataTableHeadingRow">
@@ -29,4 +29,4 @@
 </table>
 <button type="submit"><?php echo ri('Mass update')?></button>
 </form>
-<?php  echo $riview->render('riResultList::_pagination.php', array('result_list' => $result_list, 'current_route' => 'admin_askaquestion'))?>
+<?php  echo $riview->render('riResultList::_pagination.php', array('result_list' => $result_list, 'current_route' => 'riaskaquestion_admin_index'))?>
